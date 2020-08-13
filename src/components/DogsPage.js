@@ -13,8 +13,8 @@ class DogsPage extends React.Component {
         this.state = {
             race: "", 
             raceList: [],          
-            dogsData: [], 
-            id: -1   
+            dogsData: [],
+            id: -1
         }
     }
 
@@ -24,7 +24,11 @@ class DogsPage extends React.Component {
         });
     }
 
-
+    racePage = (raceName) =>{
+        this.setState({
+            id: raceName,
+        });
+    }
 
     getUrl = (race, isUpdate) =>{
         axios.get(`https://dog.ceo/api/breed/${race}/images/random`).then(response => {
@@ -57,15 +61,19 @@ class DogsPage extends React.Component {
     
     render() {
 
-        const dogs = this.state.dogsData;        
-    
+        if (this.state.id !== -1) {
+            const redirectPath = `/dogs/${this.state.id}`
+            return <Redirect to={redirectPath}/>
+        }
+
+        const dogs = this.state.dogsData; 
 
         const contentToRender= dogs.filter(dog => (dog.raceName).toLowerCase().includes((this.state.race).toLowerCase())).map((filterDog, index) =>
       
            <div key={index} className="col-xl-3 col-md-4 dogCard">
-                <div className="card">
+                <div className="card">                    
                     <div className="card-body">
-                        <p className="card-text">{filterDog.raceName} </p>
+                        <h2 onClick={() =>this.racePage(filterDog.raceName)} className="card-text">{filterDog.raceName} </h2>
                     </div> 
                     <img className="card-img-bottom" src={filterDog.imgUrl} alt={filterDog.raceName}/>
                 </div>                
