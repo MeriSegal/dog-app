@@ -73,7 +73,7 @@ class DogsPage extends React.Component {
            <div key={index} className="col-xl-3 col-md-4 dogCard">
                 <div className="card">                    
                     <div className="card-body">
-                        <h2 onClick={() =>this.racePage(filterDog.raceName)} className="card-text">{filterDog.raceName} </h2>
+                        <h2 type="button" onClick={() =>this.racePage(filterDog.raceName)} href="" className="card-text">{filterDog.raceName} </h2>
                     </div> 
                     <img className="card-img-bottom" src={filterDog.imgUrl} alt={filterDog.raceName}/>
                 </div>                
@@ -85,7 +85,7 @@ class DogsPage extends React.Component {
             <div className="wrap">
                 <div className="up-box">
                     <div className="l-box">
-                        <lable for="race" >Search </lable>
+                        <lable for="race" >Search: </lable>
                         <input  type="search" id="race" placeholder="" onChange={this.updateRace} value={this.state.race}/>
                     </div>
                     <div className="r-box">

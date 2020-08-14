@@ -39,8 +39,10 @@ class RacePage extends React.Component {
         const contentToRender= dogs.map((filterDog, index) =>
       
            <div key={index} className="col-xl-3 col-md-4 dogCard">
-                <div className="card">                   
+                <div className="card">
+                    <a href={filterDog.imgUrl}>                  
                     <img className="card-img-bottom" src={filterDog.imgUrl} alt={filterDog.raceName}/>
+                    </a> 
                 </div>                
             </div>
             );
@@ -49,7 +51,7 @@ class RacePage extends React.Component {
         return(
             <div className="wrap">
                 <div className="up-box">
-                   <h1>{this.state.race}</h1>
+                   <h2>{this.state.race}</h2>
                 </div> 
 
                 <Container>
